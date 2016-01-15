@@ -7,6 +7,8 @@ import epic.sequences.{Segmentation, SemiCRF}
 import epic.trees.Span
 import nak.data.Example
 
+import com.evojam.util.IO
+
 class SimpleNERTrainer extends NERTrainer {
   private def segmentation(
     ex: Example[IndexedSeq[String], IndexedSeq[IndexedSeq[String]]]): Segmentation[Any, String] = {
