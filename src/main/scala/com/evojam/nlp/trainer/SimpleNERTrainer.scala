@@ -1,4 +1,4 @@
-package com.evojam.nlp
+package com.evojam.nlp.trainer
 
 import java.io.FileInputStream
 

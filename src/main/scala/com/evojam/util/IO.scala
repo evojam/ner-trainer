@@ -1,6 +1,7 @@
 package com.evojam.util
 
 import java.io._
+import java.util.zip.GZIPOutputStream
 
 import scala.util.control.Exception.catching
 
@@ -21,7 +22,8 @@ object IO {
       .opt(new FileOutputStream(targetPath))
       .map(fos =>
         new ObjectOutputStream(
-          new BufferedOutputStream(fos)))
+          new BufferedOutputStream(
+            new GZIPOutputStream(fos))))
       .flatMap(oos =>
         catching(classOf[IOException])
           .opt(writeObject(obj, oos)))

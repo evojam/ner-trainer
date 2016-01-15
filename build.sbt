@@ -1,6 +1,6 @@
 organization := "com.evojam"
 
-name := "nlp-trainer"
+name := "ner-trainer"
 
 scalaVersion := "2.11.7"
 
@@ -21,6 +21,11 @@ scalacOptions ++= Seq(
 
 licenses +=("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
+resolvers ++= Seq(
+  Resolver.sonatypeRepo("public")
+)
+
 libraryDependencies ++= Seq(
+  "com.github.scopt" %% "scopt" % "3.3.0",
   "org.scalanlp" %% "epic" % "0.3.1"
 )
