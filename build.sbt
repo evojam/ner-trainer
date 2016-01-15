@@ -12,7 +12,7 @@ scalacOptions ++= Seq(
   "-deprecation",
   "-feature",
   "-unchecked",
-  "-Xlist",
+  "-Xlint",
   "-Ywarn-adapted-args",
   "-Ywarn-value-discard",
   "-Ywarn-inaccessible",
@@ -22,5 +22,5 @@ scalacOptions ++= Seq(
 licenses +=("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
 libraryDependencies ++= Seq(
-
+  "org.scalanlp" %% "epic" % "0.3.1"
 )
