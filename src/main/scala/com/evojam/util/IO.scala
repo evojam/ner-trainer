@@ -1,9 +1,11 @@
 package com.evojam.util
 
 import java.io._
-import java.util.zip.GZIPOutputStream
+import java.util.zip.{GZIPInputStream, GZIPOutputStream}
 
 import scala.util.control.Exception.catching
+
+import epic.sequences.SemiCRF
 
 object IO {
   def read(filePath: String): Option[FileInputStream] =
@@ -27,4 +29,20 @@ object IO {
       .flatMap(oos =>
         catching(classOf[IOException])
           .opt(writeObject(obj, oos)))
+
+  def load(filePath: String): SemiCRF[String, String] = {
+    val gzipin = breeze.util.nonstupidObjectInputStream(
+      new BufferedInputStream(
+        new GZIPInputStream(
+          new FileInputStream(filePath)
+        )
+      )
+    )
+
+    try {
+      gzipin.readObject().asInstanceOf[SemiCRF[String, String]]
+    } finally {
+      gzipin.close()
+    }
+  }
 }

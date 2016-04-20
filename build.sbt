@@ -2,9 +2,7 @@ organization := "com.evojam"
 
 name := "ner-trainer"
 
-scalaVersion := "2.11.7"
-
-crossScalaVersions := Seq("2.11.7")
+scalaVersion := "2.11.8"
 
 scalacOptions ++= Seq(
   "-target:jvm-1.8",
@@ -26,6 +24,6 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "com.github.scopt" %% "scopt" % "3.3.0",
+  "com.github.scopt" %% "scopt" % "3.4.0",
   "org.scalanlp" %% "epic" % "0.3.1"
 )

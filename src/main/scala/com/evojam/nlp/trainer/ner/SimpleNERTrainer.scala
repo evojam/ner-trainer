@@ -1,4 +1,4 @@
-package com.evojam.nlp.trainer
+package com.evojam.nlp.trainer.ner
 
 import java.io.FileInputStream
 
@@ -6,8 +6,6 @@ import epic.corpora.CONLLSequenceReader
 import epic.sequences.{Segmentation, SemiCRF}
 import epic.trees.Span
 import nak.data.Example
-
-import com.evojam.util.IO
 
 class SimpleNERTrainer extends NERTrainer {
   private def segmentation(
