@@ -1,12 +1,20 @@
 # ner-trainer
 
-Install locally:
+Prepare package:
 
-    sbt publishLocal
+    sbt universal:packageBin
+    
+Unzip package:
+
+    unzip ./target/universal/ner-trainer-VERSION.zip
+    
+Run:
+
+    ./ner-trainer-VERSION/bin/ner-trainer [options]
 
 Usage:
 
-    sbt @ner-trainer [options]
+    ner-trainer [options]
       -i <input file> | --in <input file>
       -o <output file> | --out <output file>
       -l <load SemiCRF file> | --load <load SemiCRF file>
