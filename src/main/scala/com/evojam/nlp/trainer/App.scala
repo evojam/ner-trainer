@@ -41,12 +41,12 @@ object App {
         (label, subsequence(segmentation.words, span.begin, span.end))
     }
 
-  def format(unpacked: IndexedSeq[(String, IndexedSeq[String])]): String =
-    unpacked.map {
+  def format(unpacked: IndexedSeq[(String, IndexedSeq[String])], t0: Long, t1: Long): String =
+    (unpacked.map {
       case (tag, subsequence) =>
         val str = subsequence.mkString(" ")
         s"[$tag: $str]"
-    } mkString " "
+    } mkString " ") + s" (in ${(t1-t0)/1000000} ms)"
 
   def interactive(semiCrf: SemiCRF[String, String]) {
     while(true) {
@@ -54,10 +54,12 @@ object App {
 
       val in = StdIn.readLine()
       val tokenized = epic.preprocess.tokenize(in.toLowerCase)
+      val t0 = System.nanoTime()
       val bestSequence = semiCrf.bestSequence(tokenized)
+      val t1 = System.nanoTime()
       val unpacked = unpackSegmentation(bestSequence)
 
-      println (format(unpacked))
+      println (format(unpacked, t0, t1))
     }
   }
 
